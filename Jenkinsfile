@@ -43,4 +43,20 @@ pipeline{
             }
         }
     }
+    post {
+        success {
+            // Send Success message
+            mail bcc: '', body: '''Hi Team,
+Build successfully completed.
+Thanks,
+DevOps Team''', subject: 'Build - SUCCESS', to: 'm.vinnukumar@gmail.com'
+        }
+        failure {
+            // Send Failure message
+            mail bcc: '', body: '''Hi Team,
+Build Failed.
+Thanks,
+DevOps Team''', subject: 'Build - FAILURE', to: 'm.vinnukumar@gmail.com'
+        }
+    }
 }
